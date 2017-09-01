@@ -8,12 +8,14 @@ For x86_64 Linux
 ```
 $ sudo apt install -y curl
 $ sudo apt install -y build-essential
+$ sudo apt install -y screen
 $ curl -O https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz
 ```
 For Raspberry Pi Linux
 ```
 $ sudo apt install -y curl
 $ sudo apt install -y build-essential
+$ sudo apt install -y screen
 $ curl -O https://storage.googleapis.com/golang/go1.9.linux-armv6l.tar.gz
 ```
 Install Go binaries
