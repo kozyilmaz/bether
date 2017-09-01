@@ -49,7 +49,7 @@ Or create a ```<datadir>/static-nodes.json``` file that has the following format
 ]
 ````
 
-Send ether from node zero to one using one's wallet address. Execute on node zero, do not forget mine transaction
+Send ether from node zero to one using one's wallet address (do not forget to mine if you are the only node mining)
 ```javascript
 > personal.unlockAccount(eth.coinbase)
 > eth.sendTransaction({from:eth.coinbase, to: '0xcb2a95f964acf8adee7fae30cf5dc6a3f5e14a5c', value: web3.toWei(.000000000001, "ether")})
