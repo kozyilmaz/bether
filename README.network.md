@@ -13,9 +13,14 @@ Launch node zero, a mining full node in cloud
 ```javascript
 $ geth --rpc --rpcport "8000" --rpccorsdomain "*" --datadir "~/bether" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" --identity "zero" --networkid 666 --mine --minerthreads 1 console
 ```
-Execute command below for running for background (may also edit /etc/rc.local)
+To run in background with ```nohup```
 ```javascript
 $ nohup geth --rpc --rpcport "8000" --rpccorsdomain "*" --datadir "~/bether" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" --identity "zero" --networkid 666 --mine --minerthreads 1 > /dev/null &
+```
+To run in background with ```screen``` (CTRL+A then D for detaching), check ```geth.sh``` script
+```javascript
+$ screen -dmS geth /usr/local/bin/geth --rpc --rpcport "8000" --rpccorsdomain "*" --datadir "~/bether" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" --identity "zero" --networkid 666 --mine --minerthreads 1
+$ screen -x geth
 ```
 For attaching geth console
 ```javascript
