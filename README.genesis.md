@@ -28,6 +28,7 @@
 
 ### Explanation of Fields
 
+https://github.com/paritytech/parity/wiki/Chain-specification
 https://ethereum.stackexchange.com/questions/2376/what-does-each-genesis-json-parameter-mean
 
 __mixhash__ A 256-bit hash which proves, combined with the nonce, that a sufficient amount of computation has been carried out on this block: the Proof-of-Work (PoW). The combination of nonce and mixhash must satisfy a mathematical condition described in the Yellowpaper, 4.3.4. Block Header Validity, (44). It allows to verify that the Block has really been cryptographically mined, thus, from this aspect, is valid.
