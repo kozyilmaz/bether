@@ -1,4 +1,4 @@
-## Create Private Ethereum Testnet
+## Private Ethereum Network
 
 ### Setup Node Zero
 Create a new account for private net
@@ -22,7 +22,7 @@ For attaching geth console
 $ geth --datadir "/root/bether" attach ipc:/root/bether/geth.ipc console
 ```
 
-Run ```eth.getBalance(eth.coinbase)``` command to check the (pre-allocated) account balance
+Run ```eth.getBalance(eth.coinbase)``` command to check the (pre-allocated) account balance  
 Run ```admin.nodeInfo``` to get enode url (```enode://xxxxx```) and add ip address of the interface ```[::]``` to construct the complete enode address to share with other peers
 ```javascript
 "enode://6ad5934db83a0266c4c6d5048d02f86b3e69251d45ad411387cde9cc5a86030f2bee4bcbe200d4238d91b01c94444e562986058c9c4acca2a92cb81eb012acfc@192.168.2.41:30303?discport=0"
@@ -41,6 +41,13 @@ Run ```admin.addPeer``` to connect node zero
 ```javascript
 > admin.addPeer("enode://6ad5934db83a0266c4c6d5048d02f86b3e69251d45ad411387cde9cc5a86030f2bee4bcbe200d4238d91b01c94444e562986058c9c4acca2a92cb81eb012acfc@192.168.2.41:30303")
 ```
+Or create a ```<datadir>/static-nodes.json``` file that has the following format
+```javascript
+[
+  "enode://f4642fa65af50cfdea8fa7414a5def7bb7991478b768e296f5e4a54e8b995de102e0ceae2e826f293c481b5325f89be6d207b003382e18a8ecba66fbaf6416c0@33.4.2.1:30303",
+  "enode://pubkey@ip:port"
+]
+````
 
 Send ether from node zero to one using one's wallet address. Execute on node zero, do not forget mine transaction
 ```javascript
