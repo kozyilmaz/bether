@@ -3,6 +3,7 @@
 
 ### Private Ethereum Genesis
 
+```javascript
 {
     "config": {
         "chainId": 42,
@@ -23,6 +24,7 @@
         }
     }
 }
+```
 
 ### Explanation of Fields
 
