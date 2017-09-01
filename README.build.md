@@ -1,5 +1,5 @@
 
-## Install Build Dependencies
+## Install Ethereum
 
 ### Install Go
 Download precompiled Go binaries from [official project site](https://golang.org/dl)
