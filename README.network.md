@@ -62,6 +62,15 @@ Send ether from node zero to one using one's wallet address (do not forget to mi
 > miner.stop()
 ```
 
+### Setup Node Two
+
+Setup and launch node two, a non-mining light node
+```javascript
+$ geth --datadir "~/bether" account new
+$ geth --datadir "~/bether" init genesis.json
+$ geth --rpc --rpcport "8000" --rpccorsdomain "*" --datadir "~/bether" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" --identity "one" --networkid 666 --light console
+```
+
 ###### Sources
 * [Ethereum Private Network](https://github.com/ethereum/go-ethereum/wiki/Private-network)
 * [Creating a private chain/testnet](https://souptacular.gitbooks.io/ethereum-tutorials-and-tips-by-hudson/content/private-chain.html)  
