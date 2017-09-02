@@ -20,7 +20,11 @@ $ grunt
 ```
 Run ```eth-netstats``` as follows, for details check ```netstats.sh``` script
 ```
-$ WS_SECRET=<chosen_secret> npm start
+$ PORT=<chosen_port:default 3000> WS_SECRET=<chosen_secret> npm start
+```
+Monitoring page can be reached like below, no information is presented until ```eth-net-intelligence-api``` is run
+```
+http://localhost:3000
 ```
 
 ### Install eth-net-intelligence-api
