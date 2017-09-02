@@ -35,7 +35,7 @@ Run ```admin.nodeInfo``` to get enode url (```enode://xxxxx```) and add ip addre
 
 ### Setup Node One
 
-Setup and launch node one, a non-mining full node
+Setup and launch node one: a non-mining full node
 ```javascript
 $ geth --datadir "~/bether" account new
 $ geth --datadir "~/bether" init genesis.json
@@ -64,7 +64,7 @@ Send ether from node zero to one using one's wallet address (do not forget to mi
 
 ### Setup Node Two
 
-Setup and launch node two, a non-mining light node
+Setup and launch node two: a non-mining light node
 ```javascript
 $ geth --datadir "~/bether" account new
 $ geth --datadir "~/bether" init genesis.json
