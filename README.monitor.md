@@ -2,7 +2,7 @@
 ## Monitoring Private Ethereum Network
 
 ### Install eth-netstats
-```eth-netstats``` is the tool providing a monitoring site (frontend) for private network stats
+[eth-netstats](https://github.com/cubedro/eth-netstats) is the tool providing a monitoring site (frontend) for private network stats
 
 Install requirements
 ```
