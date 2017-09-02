@@ -41,3 +41,9 @@ Run ```eth-net-intelligence-api``` as follows, for details check ```netintapi.sh
 ```
 $ pm2 start ./app.json
 ```
+To check logs
+```
+$ pm2 logs node-app
+```
+
+
