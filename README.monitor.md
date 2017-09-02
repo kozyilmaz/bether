@@ -33,3 +33,7 @@ $ cd eth-net-intelligence-api
 $ npm install
 $ sudo npm install -g pm2
 ```
+Run ```eth-net-intelligence-api``` as follows, for details check ```netintapi.sh``` script and ```app.json.*``` files
+```
+$ WS_SECRET=<chosen_secret> npm start
+```
