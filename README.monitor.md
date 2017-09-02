@@ -35,5 +35,5 @@ $ sudo npm install -g pm2
 ```
 Run ```eth-net-intelligence-api``` as follows, for details check ```netintapi.sh``` script and ```app.json.*``` files
 ```
-$ WS_SECRET=<chosen_secret> npm start
+$ pm2 start ./app.json
 ```
