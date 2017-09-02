@@ -1,29 +1,35 @@
 
 ## Monitoring Private Ethereum Network
 
-### Install eth-netstats
-[eth-netstats](https://github.com/cubedro/eth-netstats) is the tool providing a monitoring site (frontend) for private network stats
-
-Install requirements
+### Install requirements
 ```
 $ sudo apt install -y npm
 $ sudo apt install -y nodejs-legacy
 ```
-Install and run ```eth-netstats```, for details check ```netstats.sh``` script
+
+### Install eth-netstats
+[eth-netstats](https://github.com/cubedro/eth-netstats) is the tool providing a monitoring site (frontend) for private network stats
+
+Build ```eth-netstats``` as follows
 ```
 $ git clone https://github.com/cubedro/eth-netstats
 $ cd eth-netstats
 $ npm install
 $ sudo npm install -g grunt-cli
 $ grunt
+```
+Run ```eth-netstats``` as follows, for details check ```netstats.sh``` script
+```
 $ WS_SECRET=<chosen_secret> npm start
 ```
 
-### Build Ethereum Client
+### Install eth-net-intelligence-api
+[eth-net-intelligence-api](https://github.com/cubedro/eth-net-intelligence-api) contains processes that communicate with the ethereum client using RPC and push the data to the monitoring site via websockets.
+
+Build ```eth-net-intelligence-api``` as follows
 ```
-$ git clone https://github.com/ethereum/go-ethereum.git
-$ cd go-ethereum
-$ git checkout v1.6.7
-$ make geth
-$ sudo cp build/bin/geth /usr/local/bin/geth
+$ git clone https://github.com/cubedro/eth-net-intelligence-api
+$ cd eth-net-intelligence-api
+$ npm install
+$ sudo npm install -g pm2
 ```
