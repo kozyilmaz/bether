@@ -34,5 +34,7 @@ $ git clone https://github.com/ethereum/go-ethereum.git
 $ cd go-ethereum
 $ git checkout v1.6.7
 $ make geth
+$ make swarm
 $ sudo cp build/bin/geth /usr/local/bin/geth
+$ sudo cp build/bin/swarm /usr/local/bin/swarm
 ```
