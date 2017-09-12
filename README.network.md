@@ -68,7 +68,7 @@ Setup and launch node two: a non-mining light node
 ```javascript
 $ geth --datadir "~/bether" account new
 $ geth --datadir "~/bether" init genesis.json
-$ geth --rpc --rpcport "8000" --rpccorsdomain "*" --datadir "~/bether" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" --identity "one" --networkid 666 --light console
+$ geth --rpc --rpcport "8000" --rpccorsdomain "*" --datadir "~/bether" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" --identity "two" --networkid 666 --light console
 ```
 
 ###### Sources
