@@ -1,4 +1,4 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.16;
 
 contract vendor {
     // contract owner
@@ -6,31 +6,53 @@ contract vendor {
 
     // device data
     struct device_data {
-        bytes32 payload;
+        bytes32 file_hash;
         uint index;
     }
     // map device id's to their data (one data per id)
-    mapping(address => device_data) private logs;
-    // keep a separate device id array
+    mapping(address => device_data) private device_logs;
+
+    // keep a separate device id array of all received id's
     address[] private device_index;
 
-    // is this device seen before?
-    function is_device(address dev_id) public constant returns(bool result) {
+    // check if device is seen before?
+    function is_device_present (address device_id) public constant returns (bool result) {
+        // return false if no device present yet!
         if(device_index.length == 0) return false;
-        return (device_index[logs[dev_id].index] == dev_id);
+        // return true if device exists
+        return (device_index[device_logs[device_id].index] == device_id);
     }
-    // push specific device data into the chain
-    function insert_data(address dev_id, bytes32 dev_payload) public returns(uint index) {
-        //if(is_device(dev_id)) throw;
-        logs[dev_id].payload = dev_payload;
-        logs[dev_id].index = device_index.push(dev_id)-1;
-        return device_index.length-1;
+
+    // push specific device data handle into the chain
+    function push_device_data (address device_id, bytes32 file_hash) public returns (uint index) {
+        if(is_device_present(device_id)) {
+            // device exists
+            device_logs[device_id].file_hash = file_hash;
+            return device_logs[device_id].index;
+        } else {
+            // device received first time
+            device_logs[device_id].file_hash = file_hash;
+            device_logs[device_id].index     = device_index.push(device_id)-1;
+            return device_index.length-1;
+        }
     }
+
     // get received data for a specific device
-    function get_data(address dev_id) public constant returns(bytes32 data, uint index) {
-        //if(is_device(dev_id)) throw;
-        return(logs[dev_id].payload, logs[dev_id].index);
+    function get_device_data (address device_id) public constant returns (bytes32 data, uint index) {
+        if(is_device_present(device_id)) revert();
+        return(device_logs[device_id].file_hash, device_logs[device_id].index);
     }
+
+    // get total device count
+    function get_device_count() public constant returns (uint count) {
+        return device_index.length;
+    }
+
+    // get device address from index
+    function get_device_at_index (uint index) public constant returns (address device_address) {
+        return device_index[index];
+    }
+
     // constructor
     function vendor() {
         creator = msg.sender;
