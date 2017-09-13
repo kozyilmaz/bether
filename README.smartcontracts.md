@@ -42,7 +42,7 @@ Contract mined! address: 0x46c8731c5df8d24d154be1bf73866c946519e38a transactionH
 ```
 
 ### Running smart contract functions
-After smart contract is deployed, contract variable in generated JavaScript file can be used to list ```ABI``` and ```address``` of that contract
+After smart contract is deployed, contract variable in generated JavaScript file can be used to list ```ABI``` and ```address``` of that specific contract
 ```js
 > browser_vendor_sol_vendor
 {
