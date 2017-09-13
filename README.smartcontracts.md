@@ -42,3 +42,81 @@ Contract mined! address: 0x46c8731c5df8d24d154be1bf73866c946519e38a transactionH
 ```
 
 ### Running smart contract functions
+After smart contract is deployed, contract variable in generated JavaScript file can be used to list ```ABI``` and ```address``` of that contract
+```js
+> browser_vendor_sol_vendor
+{
+  abi: [{
+      constant: true,
+      inputs: [],
+      name: "creator",
+      outputs: [{...}],
+      payable: false,
+      stateMutability: "view",
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [],
+      name: "get_device_count",
+      outputs: [{...}],
+      payable: false,
+      stateMutability: "view",
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}, {...}],
+      name: "push_device_data",
+      outputs: [{...}],
+      payable: false,
+      stateMutability: "nonpayable",
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [],
+      name: "kill",
+      outputs: [],
+      payable: false,
+      stateMutability: "nonpayable",
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [{...}],
+      name: "get_device_data",
+      outputs: [{...}, {...}],
+      payable: false,
+      stateMutability: "view",
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [{...}],
+      name: "is_device_present",
+      outputs: [{...}],
+      payable: false,
+      stateMutability: "view",
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [{...}],
+      name: "get_device_at_index",
+      outputs: [{...}],
+      payable: false,
+      stateMutability: "view",
+      type: "function"
+  }, {
+      inputs: [],
+      payable: false,
+      stateMutability: "nonpayable",
+      type: "constructor"
+  }],
+  address: "0x46c8731c5df8d24d154be1bf73866c946519e38a",
+  transactionHash: "0x5554e94ef64027b94a0aac2c74bf92557e38373bc64a359e4e8e0aa03a6c9c5d",
+  allEvents: function(),
+  creator: function(),
+  get_device_at_index: function(),
+  get_device_count: function(),
+  get_device_data: function(),
+  is_device_present: function(),
+  kill: function(),
+  push_device_data: function()
+}
+```
