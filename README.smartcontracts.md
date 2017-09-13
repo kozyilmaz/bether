@@ -5,7 +5,8 @@
 Use Ethereum Solidity online compiler (https://remix.ethereum.org/) to create a compiled contract.  
 Click and get contract details using ```Contract details (bytecode, interface etc.)``` section.  
 Copy content of ```Web3 deploy``` into a JavaScript file and copy it to the same directory ```geth``` is launched  
-smartcontract.js will look like
+
+A compiled smart contract Javascript will look like the sample below:
 ```js
 var browser_vendor_sol_vendorContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"creator","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"get_device_count","outputs":[{"name":"count","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"device_id","type":"address"},{"name":"file_hash","type":"bytes32"}],"name":"push_device_data","outputs":[{"name":"index","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"device_id","type":"address"}],"name":"get_device_data","outputs":[{"name":"data","type":"bytes32"},{"name":"index","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"device_id","type":"address"}],"name":"is_device_present","outputs":[{"name":"result","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"index","type":"uint256"}],"name":"get_device_at_index","outputs":[{"name":"device_address","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
 var browser_vendor_sol_vendor = browser_vendor_sol_vendorContract.new(
