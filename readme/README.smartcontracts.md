@@ -49,26 +49,10 @@ After smart contract is deployed, contract variable in generated JavaScript file
   abi: [{
       constant: true,
       inputs: [],
-      name: "creator",
-      outputs: [{...}],
-      payable: false,
-      stateMutability: "view",
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [],
       name: "get_device_count",
       outputs: [{...}],
       payable: false,
       stateMutability: "view",
-      type: "function"
-  }, {
-      constant: false,
-      inputs: [{...}, {...}],
-      name: "push_device_data",
-      outputs: [{...}],
-      payable: false,
-      stateMutability: "nonpayable",
       type: "function"
   }, {
       constant: false,
@@ -81,15 +65,31 @@ After smart contract is deployed, contract variable in generated JavaScript file
   }, {
       constant: true,
       inputs: [{...}],
-      name: "get_device_data",
-      outputs: [{...}, {...}],
+      name: "get_device_timestamps",
+      outputs: [{...}],
       payable: false,
       stateMutability: "view",
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}, {...}],
+      name: "set_device_data",
+      outputs: [{...}, {...}],
+      payable: false,
+      stateMutability: "nonpayable",
       type: "function"
   }, {
       constant: true,
       inputs: [{...}],
       name: "is_device_present",
+      outputs: [{...}],
+      payable: false,
+      stateMutability: "view",
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [{...}, {...}],
+      name: "get_device_data",
       outputs: [{...}],
       payable: false,
       stateMutability: "view",
@@ -107,16 +107,22 @@ After smart contract is deployed, contract variable in generated JavaScript file
       payable: false,
       stateMutability: "nonpayable",
       type: "constructor"
+  }, {
+      anonymous: false,
+      inputs: [{...}, {...}, {...}, {...}],
+      name: "log_action",
+      type: "event"
   }],
-  address: "0x46c8731c5df8d24d154be1bf73866c946519e38a",
-  transactionHash: "0x5554e94ef64027b94a0aac2c74bf92557e38373bc64a359e4e8e0aa03a6c9c5d",
+  address: "0x685b54259740628eb5529b36a7a31af65c8e99f2",
+  transactionHash: "0x355a407c45da208ca8ee1a438ec96fdb17803528bab7c6c48ab81dc07a75ba3e",
   allEvents: function(),
-  creator: function(),
   get_device_at_index: function(),
   get_device_count: function(),
   get_device_data: function(),
+  get_device_timestamps: function(),
   is_device_present: function(),
   kill: function(),
-  push_device_data: function()
+  log_action: function(),
+  set_device_data: function()
 }
 ```
