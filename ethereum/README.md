@@ -90,7 +90,7 @@ Check timestamps and contents of received data (first device)
 ```
 
 Check timestamps and contents of received data (second device)
-```shell
+```js
 > browser_vendor_sol_vendor.get_device_timestamps('0xffecc801c6eed3fbc45d69e3e12ad4d9660f0d30');
 [1505482428, 1505482469]
 > 
