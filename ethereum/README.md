@@ -100,3 +100,17 @@ Check timestamps and contents of received data (second device)
 > browser_vendor_sol_vendor.get_device_data('0xffecc801c6eed3fbc45d69e3e12ad4d9660f0d30',1505482469);
 "a56c2b63d830363c18dbaae7388387511d96e3e129f6693a280ef7efb6265a51"
 ```
+
+Check contents of the received file handles
+```shell
+$ curl -s http://localhost:8500/bzz:/44309aed2f2be69a23fa4747a950c266a79d0444efe7f74d8f358646f6ad8894
+{ "timestamp": "1505477559", "payload": "hello from IoT device!" }
+$ curl -s http://localhost:8500/bzz:/9beba93cfa7c97d64b81c9a459e59c457794385006c2a71a1b41a6c3a64875f8
+{ "timestamp": "1505477700", "payload": "IoT device talking still" }
+$ curl -s http://localhost:8500/bzz:/0e1b17b6c63d2b49e715d3ea8858506d2e079ac97d18663c7ca35b0b5512ace9
+{ "timestamp": "1505477750", "payload": "IoT device end of talk!" }
+$ curl -s http://localhost:8500/bzz:/07db3c1a5ec6bb5eebc7f0f85bc7061db15305f8845a19b59286c9b4cc225551
+{ "timestamp": "1505477600", "payload": "lets throw another IoT device in the mix" }
+$ curl -s http://localhost:8500/bzz:/a56c2b63d830363c18dbaae7388387511d96e3e129f6693a280ef7efb6265a51
+{ "timestamp": "1505477600", "payload": "bye from other IoT device" }
+```
