@@ -3,7 +3,7 @@
 
 ### Deploying vendor smart contract
 Deploy ```vendor``` smart contract to Ethereum network (```personal.unlockAccount(eth.coinbase)``` may be needed!)
-```shell
+```js
 > loadScript('vendor.js');
 INFO [09-15|16:32:46] Submitted contract creation              fullhash=0x7b9bcb221d4dc1aeedc7aef2df051a8a9b31bb43a0be90e1337fa0c9aedc4acd contract=0x8cc8d623b2b646cd84f8af6a8676ab01f3c4ba69
 null [object Object]
@@ -15,14 +15,14 @@ Contract mined! address: 0x8cc8d623b2b646cd84f8af6a8676ab01f3c4ba69 transactionH
 ```
 
 Check if any IoT device is registered or pushed data
-```shell
+```js
 > browser_vendor_sol_vendor.get_device_count();
 0
 ```
 
 ### Sending IoT data to swarm
 Start sending data to ```swarm``` filesystem and get file hashes (handles). In this IoT backend scenario ```swarm``` system will be used as file storage and Ethereum blockchain as a file explorer 
-```shell
+```js
 $ curl -H "Content-Type: text/plain" --data-binary '{ "timestamp": "1505477559", "payload": "hello from IoT device!" }' http://localhost:8500/bzz:/
 44309aed2f2be69a23fa4747a950c266a79d0444efe7f74d8f358646f6ad8894
 $ curl -H "Content-Type: text/plain" --data-binary '{ "timestamp": "1505477600", "payload": "lets throw another IoT device in the mix" }' http://localhost:8500/bzz:/
@@ -37,7 +37,7 @@ a56c2b63d830363c18dbaae7388387511d96e3e129f6693a280ef7efb6265a51
 
 ### Tracking data via Ethereum blockchain
 Send ```swarm``` file hashes (handles) of uploaded files to Ethereum via smart contract
-```shell
+```js
 > browser_vendor_sol_vendor.set_device_data(eth.coinbase, '44309aed2f2be69a23fa4747a950c266a79d0444efe7f74d8f358646f6ad8894', {from: eth.coinbase, gas: 500000});
 INFO [09-15|16:33:16] Submitted transaction                    fullhash=0xde9a27763cd107076689fccc6bed8da4ca0ae424a6152b07a146eeff381129d4 recipient=0x8cc8d623b2b646cd84f8af6a8676ab01f3c4ba69
 "0xde9a27763cd107076689fccc6bed8da4ca0ae424a6152b07a146eeff381129d4"
@@ -51,7 +51,7 @@ INFO [09-15|16:33:58] Imported new chain segment               blocks=1 txs=1 mg
 ```
 
 Force two transactions to push multiple file hashes into a single block (same ```block.timestamp``` or ```now```)
-```shell
+```js
 > browser_vendor_sol_vendor.set_device_data(eth.coinbase, '9beba93cfa7c97d64b81c9a459e59c457794385006c2a71a1b41a6c3a64875f8', {from: eth.coinbase, gas: 500000});
 INFO [09-15|16:34:02] Submitted transaction                    fullhash=0x1e6083310acc1f90bcbccf614a0e34f489c6c72b284b0a1b3b2f8c7603c2dcf0 recipient=0x8cc8d623b2b646cd84f8af6a8676ab01f3c4ba69
 "0x1e6083310acc1f90bcbccf614a0e34f489c6c72b284b0a1b3b2f8c7603c2dcf0"
@@ -63,7 +63,7 @@ INFO [09-15|16:34:21] Imported new chain segment               blocks=1 txs=2 mg
 ```
 
 Send another file handle
-```shell
+```js
 > browser_vendor_sol_vendor.set_device_data('0xffecc801c6eed3fbc45d69e3e12ad4d9660f0d30', 'a56c2b63d830363c18dbaae7388387511d96e3e129f6693a280ef7efb6265a51', {from: eth.coinbase, gas: 500000});
 INFO [09-15|16:34:26] Submitted transaction                    fullhash=0x6aa978a4109b2d00c68aadcd66e02bc54ec923081f991e485c9263f3f6c7f9e9 recipient=0x8cc8d623b2b646cd84f8af6a8676ab01f3c4ba69
 "0x6aa978a4109b2d00c68aadcd66e02bc54ec923081f991e485c9263f3f6c7f9e9"
@@ -72,13 +72,13 @@ INFO [09-15|16:34:40] Imported new chain segment               blocks=1 txs=1 mg
 ```
 
 Check how many devices are registered
-```shell
+```js
 > browser_vendor_sol_vendor.get_device_count();
 2
 ```
 
 Check timestamps and contents of received data (first device)
-```shell
+```js
 > browser_vendor_sol_vendor.get_device_timestamps(eth.coinbase);
 [1505482411, 1505482460]
 >
@@ -102,7 +102,7 @@ Check timestamps and contents of received data (second device)
 ```
 
 Check contents of the received file handles
-```shell
+```js
 $ curl -s http://localhost:8500/bzz:/44309aed2f2be69a23fa4747a950c266a79d0444efe7f74d8f358646f6ad8894
 { "timestamp": "1505477559", "payload": "hello from IoT device!" }
 $ curl -s http://localhost:8500/bzz:/9beba93cfa7c97d64b81c9a459e59c457794385006c2a71a1b41a6c3a64875f8
