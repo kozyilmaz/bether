@@ -7,8 +7,8 @@ contract vendor {
     // device data
     struct device_data {
         uint index;
-        uint timestamp;
-        string filehash;
+        uint[] timestamps;
+        mapping(uint => string) filehashes;
     }
     // map device id's to their data (one data per id)
     mapping(address => device_data) private device_logs;
@@ -25,25 +25,35 @@ contract vendor {
     }
 
     // push specific device data handle into the chain
-    function set_device_data (address device_id, string filehash) public returns (uint index) {
+    function set_device_data (address device_id, string filehash) public returns (uint index, uint timestamp) {
+        uint ts;
         if(is_device_present(device_id)) {
             // device exists
-            device_logs[device_id].filehash = filehash;
-            device_logs[device_id].timestamp = now;
-            return device_logs[device_id].index;
+            ts = now;
+            // TODO check if data is associated with that timestamp
+            device_logs[device_id].timestamps.push(ts);
+            device_logs[device_id].filehashes[ts] = filehash;
+            return(device_logs[device_id].index, ts);
         } else {
             // device received first time
-            device_logs[device_id].filehash  = filehash;
-            device_logs[device_id].timestamp = now;
-            device_logs[device_id].index     = device_index.push(device_id)-1;
-            return device_index.length-1;
+            ts = now;
+            device_logs[device_id].timestamps.push(ts);
+            device_logs[device_id].filehashes[ts] = filehash;
+            device_logs[device_id].index = device_index.push(device_id)-1;
+            return(device_index.length-1, ts);
         }
     }
 
-    // get received data for a specific device
-    function get_device_data (address device_id) public constant returns (string hash, uint timestamp, uint index) {
+    // get received data at a certain timestamp for a specific device
+    function get_device_data (address device_id, uint timestamp) public constant returns (string hash) {
         if(!is_device_present(device_id)) revert();
-        return(device_logs[device_id].filehash, device_logs[device_id].timestamp, device_logs[device_id].index);
+        return device_logs[device_id].filehashes[timestamp];
+    }
+    
+    // get all data timestamps for a specific device
+    function get_device_timestamps (address device_id) public constant returns (uint[] timestamp) {
+        if(!is_device_present(device_id)) revert();
+        return device_logs[device_id].timestamps;
     }
     
     // get total device count
