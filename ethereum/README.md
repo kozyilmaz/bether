@@ -40,7 +40,7 @@ $ curl -H "Content-Type: text/plain" --data-binary '{ "timestamp": "1505477700",
 $ curl -H "Content-Type: text/plain" --data-binary '{ "timestamp": "1505477750", "payload": "IoT device end of talk!" }' http://localhost:8500/bzz:/
 0e1b17b6c63d2b49e715d3ea8858506d2e079ac97d18663c7ca35b0b5512ace9
 $ curl -H "Content-Type: text/plain" --data-binary '{ "timestamp": "1505477820", "payload": "bye from other IoT device" }' http://localhost:8500/bzz:/
-a56c2b63d830363c18dbaae7388387511d96e3e129f6693a280ef7efb6265a51
+a56c2b63d830363c18dbaae7388387511d96e3e129f6693a280ef7efb6265a51 
 ```
 
 ### Tracking data via Ethereum blockchain
