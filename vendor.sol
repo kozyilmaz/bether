@@ -4,29 +4,32 @@ contract vendor {
     // contract owner
     address private creator;
 
-    // device data
+    // IoT device data
     struct device_data {
+        // link for detecting devices
         uint index;
+        // blockchain timestamps stored swarm hashes  
         uint[] timestamps;
+        // map timestamp values to swarm file hashes
         mapping(uint => string) filehashes;
     }
     // map device id's to their data (one data per id)
     mapping(address => device_data) private device_logs;
-
     // keep a separate device id array of all received id's
     address[] private device_index;
-    
+
     // check if device is seen before?
-    function is_device_present (address device_id) internal constant returns (bool result) {
+    // https://medium.com/@robhitchens/solidity-crud-part-1-824ffa69509a
+    function is_device_present (address device_id) public constant returns (bool result) {
         // return false if no device present yet!
         if(device_index.length == 0) return false;
         // return true if device exists
         return (device_index[device_logs[device_id].index] == device_id);
     }
 
-    // helper function for string concat 
+    // helper function for string concatenation
     // http://cryptodir.blogspot.com.tr/2016/03/solidity-concat-string.html
-    function filehash_concat (string h1, string h2) internal constant returns (string concatenated) {
+    function filehash_concat (string h1, string h2) internal constant returns (string concat) {
         bytes memory b1 = bytes(h1);
         bytes memory b2 = bytes(h2);
         string memory sm = new string(b1.length + 1 + b2.length);
@@ -73,13 +76,14 @@ contract vendor {
         if(!is_device_present(device_id)) revert();
         return device_logs[device_id].filehashes[timestamp];
     }
-    
+
     // get all data timestamps for a specific device
+    // TODO create a timestamp getter() with start-end interval
     function get_device_timestamps (address device_id) public constant returns (uint[] timestamp) {
         if(!is_device_present(device_id)) revert();
         return device_logs[device_id].timestamps;
     }
-    
+
     // get total device count
     function get_device_count() public constant returns (uint count) {
         return device_index.length;
@@ -94,6 +98,7 @@ contract vendor {
     function vendor() {
         creator = msg.sender;
     }
+
     // kills contract and sends remaining funds back to creator
     function kill() {
         if (msg.sender == creator) {
