@@ -2,6 +2,8 @@
 ## Install Solidity IDE
 
 ### Build Solidity IDE
+Ethereum Solidity online compiler (https://remix.ethereum.org/) may be used to create a compiled contract.  
+Solidity IDE may be also be compiled and used locally like:
 ```shell
 $ git clone https://github.com/ethereum/browser-solidity
 $ cd browser-solidity
