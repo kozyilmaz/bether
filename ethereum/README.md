@@ -1,7 +1,7 @@
 
 ## Generic IoT backend with a smart contract
 
-### vendor smart contract interface
+### IoT 'vendor' smart contract interface
 ```shell
 # check if device is present i.e. has ever pushed any data
 function is_device_present (address device_id) public constant returns (bool result);
@@ -19,7 +19,7 @@ function set_device_data (address device_id, string filehash) public returns (ui
 event log_action (address indexed device_id, uint index, uint timestamp, string filehash);
 ```
 
-### Deploying vendor smart contract
+### Deploying 'vendor' smart contract
 Deploy ```vendor``` smart contract (and ```event``` listener) to Ethereum network
 ```js
 > personal.unlockAccount(eth.coinbase);
