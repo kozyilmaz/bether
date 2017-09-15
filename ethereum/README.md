@@ -1,13 +1,19 @@
 
 ## Generic IoT backend with a smart contract
 
-### API
+### vendor smart contract interface
 ```shell
+# check if device is present i.e. has ever pushed any data
 function is_device_present (address device_id) public constant returns (bool result);
+# get total device count
 function get_device_count() public constant returns (uint count);
+# enumarate device id's
 function get_device_at_index (uint index) public constant returns (address device_address);
+# get timestamps values containing data for a certain device
 function get_device_timestamps (address device_id) public constant returns (uint[] timestamp);
+# get stored file hashes (handles) at a certain time for a certain device
 function get_device_data (address device_id, uint timestamp) public constant returns (string hash);
+# push file hashes (handles) into the chain
 function set_device_data (address device_id, string filehash) public returns (uint index, uint timestamp);
 # event to log action
 event log_action (address indexed device_id, uint index, uint timestamp, string filehash);
