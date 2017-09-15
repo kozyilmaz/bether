@@ -77,6 +77,7 @@ Check how many devices are registered
 2
 ```
 
+### Querying IoT backend and reaching stored data via Ethereum
 Check timestamps and contents of received data (first device)
 ```js
 > browser_vendor_sol_vendor.get_device_timestamps(eth.coinbase);
