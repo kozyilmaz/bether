@@ -17,6 +17,8 @@ contract vendor {
     mapping(address => device_data) private device_logs;
     // keep a separate device id array of all received id's
     address[] private device_index;
+    // event to log action
+    event log_action (address indexed device_id, uint index, uint timestamp, string filehash);
 
     // check if device is seen before?
     // https://medium.com/@robhitchens/solidity-crud-part-1-824ffa69509a
@@ -60,6 +62,8 @@ contract vendor {
                 // doc, this is heavy!
                 assert(false);
             }
+            // trigger event
+            log_action(device_id, device_logs[device_id].index, ts, filehash);
             return(device_logs[device_id].index, ts);
         } else {
             // device received first time
@@ -67,6 +71,8 @@ contract vendor {
             device_logs[device_id].timestamps.push(ts);
             device_logs[device_id].filehashes[ts] = filehash;
             device_logs[device_id].index = device_index.push(device_id)-1;
+            // trigger event
+            log_action(device_id, device_index.length-1, ts, filehash);
             return(device_index.length-1, ts);
         }
     }
