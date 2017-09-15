@@ -1,5 +1,5 @@
 
-## Install Ethereum
+## Install Ethereum and Swarm
 
 ### Install Go
 Download precompiled Go binaries from [official project site](https://golang.org/dl)
@@ -28,7 +28,7 @@ $ export PATH=$PATH:/usr/local/go/bin
 $ sudo reboot
 ```
 
-### Build Ethereum Client
+### Build Ethereum and Swarm Client
 ```
 $ git clone https://github.com/ethereum/go-ethereum.git
 $ cd go-ethereum
