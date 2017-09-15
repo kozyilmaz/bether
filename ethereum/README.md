@@ -101,7 +101,7 @@ Check timestamps and contents of received data (second device)
 "a56c2b63d830363c18dbaae7388387511d96e3e129f6693a280ef7efb6265a51"
 ```
 
-Look into ````swarm``` handles received via Ethereum blockchain
+Look into ```swarm``` handles received via Ethereum blockchain
 ```js
 $ curl -s http://localhost:8500/bzz:/44309aed2f2be69a23fa4747a950c266a79d0444efe7f74d8f358646f6ad8894
 { "timestamp": "1505477559", "payload": "hello from IoT device!" }
