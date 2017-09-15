@@ -1,7 +1,7 @@
 
 ## Generic IoT backend with a smart contract
 
-### IoT 'vendor' smart contract interface
+### IoT vendor smart contract interface
 ```shell
 # check if device is present i.e. has ever pushed any data
 function is_device_present (address device_id) public constant returns (bool result);
@@ -19,8 +19,8 @@ function set_device_data (address device_id, string filehash) public returns (ui
 event log_action (address indexed device_id, uint index, uint timestamp, string filehash);
 ```
 
-### Deploying 'vendor' smart contract
-Deploy ```vendor``` smart contract (and ```event``` listener) to Ethereum network
+### Deploying vendor smart contract
+Deploy ```vendor``` smart contract (and ```event``` listener) to ```Ethereum``` network
 ```js
 > personal.unlockAccount(eth.coinbase);
 Unlock account 0x55ac737cc9bc16ffd1af42e53ee1515e56b6a188
@@ -46,8 +46,8 @@ Check if any IoT device is registered or ever pushed data
 0
 ```
 
-### Sending IoT data to swarm
-Start sending data to ```swarm``` filesystem and get file hashes (handles). In this IoT backend scenario ```swarm``` system will be used as file storage and Ethereum blockchain as a file explorer 
+### Sending IoT data to Swarm
+Start sending data to ```Swarm``` filesystem and get file hashes (handles). In this IoT backend scenario ```Swarm``` system will be used as file storage and ```Ethereum``` blockchain as a file explorer 
 ```js
 $ curl -H "Content-Type: text/plain" --data-binary '{ "timestamp": "1505477559", "payload": "hello from IoT device!" }' http://localhost:8500/bzz:/
 44309aed2f2be69a23fa4747a950c266a79d0444efe7f74d8f358646f6ad8894
@@ -62,7 +62,7 @@ a56c2b63d830363c18dbaae7388387511d96e3e129f6693a280ef7efb6265a51
 ```
 
 ### Tracking data via Ethereum blockchain
-Send ```swarm``` file hashes (handles) of uploaded files to Ethereum via smart contract
+Send ```Swarm``` file hashes (handles) of uploaded files to ```Ethereum``` via smart contract
 ```js
 > browser_vendor_sol_vendor.set_device_data(eth.coinbase, '44309aed2f2be69a23fa4747a950c266a79d0444efe7f74d8f358646f6ad8894', {from: eth.coinbase, gas: 500000});
 INFO [09-15|22:31:39] Submitted transaction                    fullhash=0x7f17070b6c129af55bc1f6f2e5db01a7a74bc143f09b41dc349ff9e5ab485cfb recipient=0x353ef87ff272733c0acd23540d2b2c8e4a9c0d63
@@ -133,7 +133,7 @@ Check timestamps and contents of received data (second device)
 "a56c2b63d830363c18dbaae7388387511d96e3e129f6693a280ef7efb6265a51"
 ```
 
-Look into ```swarm``` handles received via Ethereum blockchain
+Look into ```Swarm``` handles received via ```Ethereum``` blockchain
 ```js
 $ curl -s http://localhost:8500/bzz:/44309aed2f2be69a23fa4747a950c266a79d0444efe7f74d8f358646f6ad8894
 { "timestamp": "1505477559", "payload": "hello from IoT device!" }
