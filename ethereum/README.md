@@ -3,14 +3,13 @@
 
 ### API
 ```js
-function is_device_present (address device_id) public constant returns (bool result);
-function get_device_count() public constant returns (uint count);
-function get_device_at_index (uint index) public constant returns (address device_address);
-function get_device_timestamps (address device_id) public constant returns (uint[] timestamp);
-function get_device_data (address device_id, uint timestamp) public constant returns (string hash);
-function set_device_data (address device_id, string filehash) public returns (uint index, uint timestamp);
-
-event log_action (address indexed device_id, uint index, uint timestamp, string filehash);
+function is_device_present (address device_id) public constant returns (bool result);  
+function get_device_count() public constant returns (uint count);  
+function get_device_at_index (uint index) public constant returns (address device_address);  
+function get_device_timestamps (address device_id) public constant returns (uint[] timestamp);  
+function get_device_data (address device_id, uint timestamp) public constant returns (string hash);  
+function set_device_data (address device_id, string filehash) public returns (uint index, uint timestamp);  
+event log_action (address indexed device_id, uint index, uint timestamp, string filehash);  
 ```
 
 ### Deploying vendor smart contract
