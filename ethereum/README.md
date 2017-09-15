@@ -30,7 +30,7 @@ Check if any IoT device is registered or ever pushed data
 
 ### Sending IoT data to swarm
 Start sending data to ```swarm``` filesystem and get file hashes (handles). In this IoT backend scenario ```swarm``` system will be used as file storage and Ethereum blockchain as a file explorer 
-```js
+```shell
 $ curl -H "Content-Type: text/plain" --data-binary '{ "timestamp": "1505477559", "payload": "hello from IoT device!" }' http://localhost:8500/bzz:/
 44309aed2f2be69a23fa4747a950c266a79d0444efe7f74d8f358646f6ad8894
 $ curl -H "Content-Type: text/plain" --data-binary '{ "timestamp": "1505477600", "payload": "lets throw another IoT device in the mix" }' http://localhost:8500/bzz:/
