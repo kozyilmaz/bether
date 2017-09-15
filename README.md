@@ -1,6 +1,9 @@
-# Bether : IoT backend with Ethereum smart contracts
+# Bether : IoT backend with an Ethereum smart contract
 
 ![Bether](https://github.com/kozyilmaz/bether/raw/master/readme/ethstats.png "Proof-of-concept IoT backend")
+
+### Smart contract
+* [How to deploy and run ```vendor````smart contract?](ethereum/README.md)
 
 ### Complete setup guide
 * [How to build Ethereum and Swarm binaries?](readme/README.build.md)
