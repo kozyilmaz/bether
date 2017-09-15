@@ -2,7 +2,7 @@ pragma solidity ^0.4.6;
 
 contract vendor {
     // contract owner
-    address public creator;
+    address private creator;
 
     // device data
     struct device_data {
@@ -17,22 +17,46 @@ contract vendor {
     address[] private device_index;
     
     // check if device is seen before?
-    function is_device_present (address device_id) public constant returns (bool result) {
+    function is_device_present (address device_id) internal constant returns (bool result) {
         // return false if no device present yet!
         if(device_index.length == 0) return false;
         // return true if device exists
         return (device_index[device_logs[device_id].index] == device_id);
     }
 
+    // helper function for string concat 
+    // http://cryptodir.blogspot.com.tr/2016/03/solidity-concat-string.html
+    function filehash_concat (string h1, string h2) internal constant returns (string concatenated) {
+        bytes memory b1 = bytes(h1);
+        bytes memory b2 = bytes(h2);
+        string memory sm = new string(b1.length + 1 + b2.length);
+        bytes memory bm = bytes(sm);
+        uint i = 0;
+        uint k = 0;
+        for (i = 0; i < b1.length; i++) bm[k++] = b1[i];
+        bm[k++] = ',';
+        for (i = 0; i < b2.length; i++) bm[k++] = b2[i];
+        return string(sm);
+    }
+
     // push specific device data handle into the chain
     function set_device_data (address device_id, string filehash) public returns (uint index, uint timestamp) {
         uint ts;
         if(is_device_present(device_id)) {
-            // device exists
+            // device already exists
             ts = now;
-            // TODO check if data is associated with that timestamp
-            device_logs[device_id].timestamps.push(ts);
-            device_logs[device_id].filehashes[ts] = filehash;
+            if( device_logs[device_id].timestamps.length == 0 ||
+                device_logs[device_id].timestamps[device_logs[device_id].timestamps.length-1] < ts) {
+                // first insertion or insertion made (at least) in last block 
+                device_logs[device_id].timestamps.push(ts);
+                device_logs[device_id].filehashes[ts] = filehash;
+            } else if(device_logs[device_id].timestamps[device_logs[device_id].timestamps.length-1] == ts) {
+                // data inserted before, lets concat data for that certain timestamp
+                device_logs[device_id].filehashes[ts] = filehash_concat(device_logs[device_id].filehashes[ts], filehash);
+            } else {
+                // doc, this is heavy!
+                assert(false);
+            }
             return(device_logs[device_id].index, ts);
         } else {
             // device received first time
