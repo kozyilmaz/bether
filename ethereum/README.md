@@ -2,7 +2,7 @@
 ## Generic IoT backend with a smart contract
 
 ### Deploying vendor smart contract
-Deploy ```vendor``` smart contract to Ethereum network
+Deploy ```vendor``` smart contract (and ```event``` listener) to Ethereum network
 ```js
 > personal.unlockAccount(eth.coinbase);
 Unlock account 0x55ac737cc9bc16ffd1af42e53ee1515e56b6a188
