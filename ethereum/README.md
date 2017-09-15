@@ -9,9 +9,9 @@ function is_device_present (address device_id) public constant returns (bool res
 function get_device_count() public constant returns (uint count);
 # enumarate device id's
 function get_device_at_index (uint index) public constant returns (address device_address);
-# get timestamps values containing data for a certain device
+# get timestamp values containing data (for a specific device)
 function get_device_timestamps (address device_id) public constant returns (uint[] timestamp);
-# get stored file hashes (handles) at a certain time for a certain device
+# get stored file hashes (handles) with certain timestamp (for a specific device)
 function get_device_data (address device_id, uint timestamp) public constant returns (string hash);
 # push file hashes (handles) into the chain
 function set_device_data (address device_id, string filehash) public returns (uint index, uint timestamp);
