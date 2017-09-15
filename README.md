@@ -1,4 +1,4 @@
-# Bether : an IoT backend implementation with Ethereum smart contracts
+# Bether : IoT backend with Ethereum smart contracts
 
 ![Screenshot](https://github.com/kozyilmaz/bether/raw/master/readme/ethstats.png "Proof-of-concept IoT backend")
 
