@@ -7,7 +7,7 @@
 * Created file handles are pushed into ```Ethereum``` via a smart contract named [vendor.sol](ethereum/vendor.sol).
 * Using ```Swarm``` as a storage service  and ```blockchain``` as a file explorer makes it possible to use ```Ethereum + Swarm``` as the generic web backend for IoT device manufacturers.
 
-### IoT vendor smart contract interface
+### Smart contract interface
 ```shell
 # check if device is present i.e. has ever pushed any data
 function is_device_present (address device_id) public constant returns (bool result);
