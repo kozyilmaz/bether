@@ -1,6 +1,8 @@
-# bether
-A better IoT network via Ethereum
+# Bether : an IoT backend implementation with Ethereum smart contracts
 
+![Screenshot](https://github.com/kozyilmaz/bether/raw/master/readme/ethstats.png "Proof-of-concept IoT backend")
+
+### Complete setup guide
 * [How to build Ethereum binaries?](readme/README.build.md)
 * [What is Genesis block?](readme/README.genesis.md)
 * [How to setup a private Ethereum network?](readme/README.network.md)
