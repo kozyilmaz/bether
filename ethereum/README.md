@@ -7,7 +7,7 @@
 function is_device_present (address device_id) public constant returns (bool result);
 # get total device count
 function get_device_count() public constant returns (uint count);
-# enumarate device id's
+# enumerate device id's
 function get_device_at_index (uint index) public constant returns (address device_address);
 # get timestamp values containing data (for a specific device)
 function get_device_timestamps (address device_id) public constant returns (uint[] timestamp);
