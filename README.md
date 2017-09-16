@@ -1,4 +1,4 @@
-# Bether: IoT backend with Swarm and Ethereum smart contracts
+## Bether: IoT backend with Swarm and Ethereum smart contracts
 
 ![Bether](https://github.com/kozyilmaz/bether/raw/master/readme/ethstats.png "Proof-of-concept IoT backend")
 
